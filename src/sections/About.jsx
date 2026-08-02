@@ -1,119 +1,125 @@
 import { motion } from "framer-motion";
 import {
-  FaLaptopCode,
-  FaBrain,
-  FaCode,
-  FaGraduationCap,
+    FaUserGraduate,
+    FaLaptopCode,
+    FaBriefcase,
+    FaLightbulb
 } from "react-icons/fa";
 
-function About() {
-  return (
-    <section id="about" className="about">
+export default function About(){
 
-      <motion.div
-        initial={{ opacity: 0, y: 70 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="section-title">About Me</h2>
+    const cards=[
 
-        <p className="about-text">
-          I am a Computer Science and Engineering (Data Science)
-          undergraduate with a strong passion for Artificial Intelligence,
-          Machine Learning, Full Stack Development, and Software Engineering.
-        </p>
+        {
+            icon:<FaUserGraduate/>,
+            title:"Education",
+            text:"Computer Science student passionate about building modern web applications and continuously learning new technologies."
+        },
 
-        <p className="about-text">
-          I enjoy building scalable applications, experimenting with
-          Large Language Models, and developing solutions that solve
-          real-world problems through technology.
-        </p>
+        {
+            icon:<FaLaptopCode/>,
+            title:"Development",
+            text:"Experienced with React, Java, Spring Boot, SQL and creating responsive full-stack applications."
+        },
 
-        <p className="about-text">
-          During my AI Research Internship at the University of Hyderabad,
-          I worked on evaluating multiple Large Language Models for
-          Software Requirements Verification using the ISO/IEC 29148
-          international standard.
-        </p>
+        {
+            icon:<FaBriefcase/>,
+            title:"Career Goal",
+            text:"Seeking Software Engineer opportunities where I can solve real-world problems and contribute to impactful products."
+        },
 
-      </motion.div>
+        {
+            icon:<FaLightbulb/>,
+            title:"Interests",
+            text:"Web Development, System Design, Problem Solving, AI and Cloud Technologies."
+        }
 
-      <div className="about-grid">
+    ];
 
-        <motion.div
-          className="about-card"
-          whileHover={{ y: -10 }}
-        >
-          <FaLaptopCode className="about-icon" />
-          <h3>Full Stack</h3>
+    return(
 
-          <p>
-            React, Node.js,
-            Express,
-            MongoDB,
-            REST APIs,
-            FastAPI
-          </p>
+<section className="about" id="about">
 
-        </motion.div>
+<div className="section-header">
+  <span className="section-tag">ABOUT ME</span>
+  <h2>Who I Am & What I Build</h2>
+  <p>
+    Passionate about creating scalable applications and continuously
+    improving my software engineering skills.
+  </p>
+</div>
 
-        <motion.div
-          className="about-card"
-          whileHover={{ y: -10 }}
-        >
-          <FaBrain className="about-icon" />
+<motion.p
 
-          <h3>Artificial Intelligence</h3>
+className="about-text"
 
-          <p>
-            Machine Learning,
-            TensorFlow,
-            Scikit-learn,
-            LLMs,
-            Prompt Engineering
-          </p>
+initial={{opacity:0,y:40}}
 
-        </motion.div>
+whileInView={{opacity:1,y:0}}
 
-        <motion.div
-          className="about-card"
-          whileHover={{ y: -10 }}
-        >
-          <FaCode className="about-icon" />
+transition={{duration:.6}}
 
-          <h3>Programming</h3>
+viewport={{once:true}}
 
-          <p>
-            Java,
-            Python,
-            JavaScript,
-            C,
-            Data Structures
-          </p>
+>
 
-        </motion.div>
+I am a passionate Full Stack Developer with strong foundations in Java,
+React, Spring Boot and SQL. I enjoy creating modern, responsive and
+user-friendly applications while continuously improving my problem-solving
+skills and learning new technologies.
 
-        <motion.div
-          className="about-card"
-          whileHover={{ y: -10 }}
-        >
-          <FaGraduationCap className="about-icon" />
+</motion.p>
 
-          <h3>Education</h3>
+<div className="about-grid">
 
-          <p>
-            B.Tech CSE (Data Science)
-            <br />
-            CGPA: 9.36
-          </p>
+{
 
-        </motion.div>
+cards.map((card,index)=>(
 
-      </div>
+<motion.div
 
-    </section>
-  );
+className="about-card"
+
+key={index}
+
+initial={{opacity:0,y:50}}
+
+whileInView={{opacity:1,y:0}}
+
+transition={{delay:index*.2}}
+
+viewport={{once:true}}
+
+>
+
+<div className="about-icon">
+
+{card.icon}
+
+</div>
+
+<h3>
+
+{card.title}
+
+</h3>
+
+<p>
+
+{card.text}
+
+</p>
+
+</motion.div>
+
+))
+
 }
 
-export default About;
+</div>
+
+</section>
+
+    );
+
+}

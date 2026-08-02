@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 
 const links = [
   { name: "Home", href: "#hero" },
@@ -10,7 +10,7 @@ const links = [
   { name: "Contact", href: "#contact" },
 ];
 
-function Navbar() {
+function Navbar({ theme, toggleTheme }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,8 +27,18 @@ function Navbar() {
         ))}
       </ul>
 
-      <div className="menu-icon" onClick={() => setOpen(!open)}>
-        {open ? <FaTimes /> : <FaBars />}
+      <div className="nav-actions">
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        >
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
+        </button>
+
+        <div className="menu-icon" onClick={() => setOpen(!open)}>
+          {open ? <FaTimes /> : <FaBars />}
+        </div>
       </div>
     </nav>
   );

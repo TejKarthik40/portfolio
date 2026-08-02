@@ -10,6 +10,7 @@ import {
   FaDatabase,
   FaHtml5,
   FaCss3Alt,
+  FaCode,
 } from "react-icons/fa";
 import {
   SiExpress,
@@ -17,13 +18,13 @@ import {
   SiTensorflow,
   SiScikitlearn,
   SiJupyter,
+  SiSpringboot,
 } from "react-icons/si";
-
-import { FaCode } from "react-icons/fa";
 
 const skillCategories = [
   {
-    title: "Programming Languages",
+    title: "Languages",
+    summary: "Core programming foundations",
     skills: [
       { name: "Java", icon: <FaJava /> },
       { name: "Python", icon: <FaPython /> },
@@ -33,43 +34,42 @@ const skillCategories = [
   },
   {
     title: "Frontend",
+    summary: "Modern web interfaces",
     skills: [
       { name: "HTML5", icon: <FaHtml5 /> },
       { name: "CSS3", icon: <FaCss3Alt /> },
       { name: "React", icon: <FaReact /> },
+      { name: "Vite", icon: "⚡" },
     ],
   },
   {
     title: "Backend",
+    summary: "Scalable application logic",
     skills: [
       { name: "Node.js", icon: <FaNodeJs /> },
       { name: "Express.js", icon: <SiExpress /> },
+      { name: "Spring Boot", icon: <SiSpringboot /> },
       { name: "REST APIs", icon: "API" },
       { name: "FastAPI", icon: "⚡" },
     ],
   },
   {
-    title: "Databases",
+    title: "Data & AI",
+    summary: "Analytics and intelligent systems",
     skills: [
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "MySQL", icon: <FaDatabase /> },
-    ],
-  },
-  {
-    title: "AI / Machine Learning",
-    skills: [
       { name: "TensorFlow", icon: <SiTensorflow /> },
       { name: "Scikit-learn", icon: <SiScikitlearn /> },
-      { name: "NumPy" },
-      { name: "Pandas" },
-      { name: "Matplotlib" },
-      { name: "Seaborn" },
-      { name: "LLMs" },
-      { name: "Prompt Engineering" },
+      { name: "NumPy", icon: "N" },
+      { name: "Pandas", icon: "P" },
+      { name: "LLMs", icon: "AI" },
+      { name: "Prompt Engineering", icon: "✦" },
     ],
   },
   {
-    title: "Developer Tools",
+    title: "Tools",
+    summary: "Development workflow",
     skills: [
       { name: "Git", icon: <FaGitAlt /> },
       { name: "GitHub", icon: <FaGithub /> },
@@ -79,14 +79,14 @@ const skillCategories = [
   },
   {
     title: "Core CS",
+    summary: "Computer science fundamentals",
     skills: [
-      { name: "DSA" },
-      { name: "OOP" },
-      { name: "DBMS" },
-      { name: "Computer Networks" },
-      { name: "Operating Systems" },
-      { name: "Software Engineering" },
-      { name: "Cloud Computing" },
+      { name: "DSA", icon: "⌘" },
+      { name: "OOP", icon: "◧" },
+      { name: "DBMS", icon: "DB" },
+      { name: "Networks", icon: "⇄" },
+      { name: "OS", icon: "⏻" },
+      { name: "Software Engineering", icon: "⚙" },
     ],
   },
 ];
@@ -94,34 +94,37 @@ const skillCategories = [
 function Skills() {
   return (
     <section id="skills" className="skills">
-      <motion.h2
-        className="section-title"
+      <motion.div
+        className="section-header"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Technical Skills
-      </motion.h2>
+        <span className="section-tag">TECH STACK</span>
+        <h2>Technical Skills</h2>
+        <p>Focused on building modern, scalable, and intelligent applications.</p>
+      </motion.div>
 
       <div className="skills-wrapper">
-        {skillCategories.map((category) => (
+        {skillCategories.map((category, index) => (
           <motion.div
             className="skill-category"
             key={category.title}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -8 }}
+            transition={{ delay: index * 0.08 }}
+            whileHover={{ y: -8, scale: 1.01 }}
           >
-            <h3>{category.title}</h3>
+            <div className="skill-category-header">
+              <h3>{category.title}</h3>
+              <p>{category.summary}</p>
+            </div>
 
             <div className="skill-list">
               {category.skills.map((skill) => (
                 <div className="skill-item" key={skill.name}>
-                  <span className="skill-icon">
-                    {skill.icon || "•"}
-                  </span>
-
+                  <span className="skill-icon">{skill.icon || "•"}</span>
                   <span>{skill.name}</span>
                 </div>
               ))}

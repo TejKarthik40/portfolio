@@ -27,9 +27,9 @@ const projects = [
       "Axios",
     ],
 
-    github: "https://github.com/TejKarthik40",
+    github: "https://github.com/TejKarthik40/TIme-Tide-Smart-Time-Management",
 
-    demo: "#",
+    demo: "https://time-tide-pomodoro.vercel.app/",
   },
 
   {
@@ -59,7 +59,7 @@ const projects = [
       "LLMs",
     ],
 
-    github: "https://github.com/TejKarthik40",
+    github: "https://github.com/TejKarthik40/Sarkar-AI",
 
     demo: "#",
   },
